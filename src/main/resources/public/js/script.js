@@ -82,7 +82,7 @@ myApp.controller('DetaljiController', function ($scope, $http, $route, $routePar
       $http.get('//'+$location.host()+'/imenik/osoba/'+$routeParams.id).success(function(response){
            $scope.detalji = response;
            $scope.kontakti = response.kontakt;
-           $scope.slika = "background-image: url(http://res.cloudinary.com/hkq9ylmon/image/upload/"+$scope.detalji.slika+");";
+           $scope.slika = "background-image: url(//res.cloudinary.com/hkq9ylmon/image/upload/"+$scope.detalji.slika+");";
        });
 
       $scope.izbrisiOsobu = function() {
