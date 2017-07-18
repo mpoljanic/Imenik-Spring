@@ -1,0 +1,129 @@
+
+        <div class="alert alert-success fadein fadeout" role="alert" ng-show="poruka" style="margin-top:50px;"
+             xmlns="http://www.w3.org/1999/html">
+            Promjene uspješno izvršene!
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h1 id="forms">Detalji osobe</h1>
+                    <p><strong>Napomena:</strong> sva polja su obavezna i barem jedan kontakt.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-7">
+                    <form class="form-horizontal" name="SubmitKontakt" >
+                        <fieldset style="margin-bottom:50px;">
+                            <legend>Detalji</legend>
+                            <div class="form-group">
+                                <label for="inputIme" class="col-lg-2 control-label">Ime</label>
+                                <div class="col-lg-6">
+                                    <input type="text" ng-model="detalji.ime" class="form-control" id="inputIme" placeholder="Ime" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPrezime" class="col-lg-2 control-label">Prezime</label>
+                                <div class="col-lg-6">
+                                    <input type="text" ng-model="detalji.prezime" class="form-control" id="inputPrezime" placeholder="Prezime" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputGrad" class="col-lg-2 control-label">Grad</label>
+                                <div class="col-lg-6">
+                                    <input type="text" ng-model="detalji.grad" class="form-control" id="inputGrad" placeholder="Grad" required="required"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputOpis" class="col-lg-2 control-label">Opis</label>
+                                <div class="col-lg-8">
+                                    <textarea ng-model="detalji.opis" class="form-control" rows="3" id="inputOpis"></textarea>
+                                </div>
+                            </div>
+                            <legend>Kontakti<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target=".bs-example-modal-md" style="float: right;">Dodaj</button></legend>
+                            <div class="form-group" ng-repeat="kontakt in detalji.kontakt">
+                                <label for="inputOpis" class="col-lg-2 control-label">{{kontakt.vrsta}}</label>
+                                <div class="col-lg-4">
+                                    <input type="text" ng-model="kontakt.broj" class="form-control"  id="inputGrad2" placeholder="Broj" required="required"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <input type="text" ng-model="kontakt.opis" class="form-control" id="inputGrad1" placeholder="Opis" required="required"/>
+                                </div>
+                                <div class="col-lg-2">
+                                    <a href="" style="line-height: 45px;" data-ng-click="izbrisiKontakt($index)">Izbriši</a>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </form>
+              </div>
+
+            <div class="col-lg-5">
+                <legend>Slika<span style="float:right;" class="btn btn-default btn-file btn-xs">Promjeni<input type="file" ng-model="image" ng-change="novaSlika()" name="file" required="required" base-sixty-four-input></span></legend>
+                <div class="row" style="text-align:center; margin-top:50px;">
+                    <div class="slika" style="{{slika}}"></div>
+                </div>
+            </div>
+         </div>
+
+
+
+
+
+        <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Unesite kontakt</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form name="dodajKontaktForma" class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="select" class="col-lg-2 control-label">Vrsta</label>
+                                    <div class="col-lg-10">
+                                        <select ng-model="vrsta" class="form-control" id="select">
+                                            <option>Mobitel</option>
+                                            <option>Telefon</option>
+                                            <option>Fax</option>
+                                            <option>Email</option>
+                                            <option>Ostalo</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputOpis" class="col-lg-2 control-label">Opis</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" ng-model="opis" class="form-control" id="inputOpis" placeholder="Poslovno" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputBroj" class="col-lg-2 control-label">Broj</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" ng-model="broj" class="form-control" id="inputBroj" placeholder="0981313435" required="required"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" ng-disabled="dodajKontaktForma.$invalid" ng-click="dodajKontakt()" class="btn btn-primary ">Dodaj</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="row" style="text-align:center; margin-top:40px; margin-bottom: 40px;">
+        <button type="button"  ng-click="izbrisiOsobu()" class="btn btn-danger">Izbriši</button>
+        <button type="button"  ng-click="spremiPromjene()" class="btn btn-primary {{ucitavanjeStyle}}">{{tipkaloPoruka}}</button>
+    </div>
+

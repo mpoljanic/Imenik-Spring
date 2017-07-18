@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Omega imenik</title>
+    <base href="/index.html"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <script src="//cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="/js/base64.js"></script>
+    <script src="/js/script.js"></script>
+    <style>
+        body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+        }
+        .btn-file {
+        position: relative;
+        overflow: hidden;
+        }
+        .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+        }
+        .slika {
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        background-size: 100%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        display: table;
+        margin: 0 auto;
+        }
+        .fadein,
+        .fadeout {
+        -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+        -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+        -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+        }
+
+        .fadein.ng-hide-remove,
+        .fadeout.ng-hide-add.ng-hide-add-active {
+        opacity: 0;
+        display: block !important;
+        }
+
+        .fadeout.ng-hide-add,
+        .fadein.ng-hide-remove.ng-hide-remove-active {
+        opacity: 1;
+        display: block !important;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+<nav class="navbar  navbar-fixed-top navbar-default" role="navigation">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Omega-Software imenik</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/">Imenik</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/dodaj">Dodaj novi kontakt</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="container">
+    <div ng-view=""></div>
+</div>
+
+
+
+</body>
+</html>
