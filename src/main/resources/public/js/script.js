@@ -30,7 +30,7 @@ myApp.controller('ImenikController', function ($rootScope, $scope, $http, $route
     };
 
     $scope.ucitajStranicu = function() {
-        $http.get('http://'+$location.host()+'/imenik/?page='+$scope.api.page).success(function(response){
+        $http.get('//'+$location.host()+'/imenik/?page='+$scope.api.page).success(function(response){
             $scope.api.ukupnoStranica = response.totalPages;
             $scope.osobe = response.content;
         });
@@ -55,7 +55,7 @@ myApp.controller('ImenikController', function ($rootScope, $scope, $http, $route
     if($scope.trazi.kriterij==""){
         $scope.ucitajStranicu();
     } else {
-        $http.get('http://'+$location.host()+'/imenik/trazi/'+$scope.trazi.kriterij).success(function(response){
+        $http.get('//'+$location.host()+'/imenik/trazi/'+$scope.trazi.kriterij).success(function(response){
             $scope.osobe = response;
         });
      }
@@ -79,14 +79,14 @@ myApp.controller('DetaljiController', function ($scope, $http, $route, $routePar
       $scope.ucitavanjeStyle = null;
       $scope.tipkaloPoruka = "Spremi";
 
-      $http.get('http://'+$location.host()+'/imenik/osoba/'+$routeParams.id).success(function(response){
+      $http.get('//'+$location.host()+'/imenik/osoba/'+$routeParams.id).success(function(response){
            $scope.detalji = response;
            $scope.kontakti = response.kontakt;
            $scope.slika = "background-image: url(http://res.cloudinary.com/hkq9ylmon/image/upload/"+$scope.detalji.slika+");";
        });
 
       $scope.izbrisiOsobu = function() {
-        $http.post('http://'+$location.host()+'/imenik/obrisi/'+$routeParams.id).success(function(response){
+        $http.post('//'+$location.host()+'/imenik/obrisi/'+$routeParams.id).success(function(response){
             $location.path("/");
         });
       };
@@ -100,7 +100,7 @@ myApp.controller('DetaljiController', function ($scope, $http, $route, $routePar
                 delete $scope.kontakti[i]['kontaktId'];
             }
 
-            $http.post('http://'+$location.host()+'/imenik/update', angular.toJson($scope.detalji), {headers: {'Content-Type': 'application/json'}}).success(function(response){
+            $http.post('//'+$location.host()+'/imenik/update', angular.toJson($scope.detalji), {headers: {'Content-Type': 'application/json'}}).success(function(response){
                  $scope.poruka=true;
                  $scope.ucitavanjeStyle = null;
                  $scope.tipkaloPoruka = "Spremi";
@@ -149,7 +149,7 @@ myApp.controller('DodajOsobuController', function ($scope, $http, $timeout, $loc
         $scope.tipkaloPoruka = "Ucitavanje..";
         $scope.form.slika = $scope.image.base64;
 
-        $http.post('http://'+$location.host()+'/imenik/dodaj', $scope.form, {headers: {'Content-Type': 'application/json'}}).success(function(response){
+        $http.post('//'+$location.host()+'/imenik/dodaj', $scope.form, {headers: {'Content-Type': 'application/json'}}).success(function(response){
              $scope.kontakti = null;
              $scope.image = null;
              $scope.form.opis = null;
