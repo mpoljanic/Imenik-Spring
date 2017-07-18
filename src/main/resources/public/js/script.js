@@ -30,7 +30,7 @@ myApp.controller('ImenikController', function ($rootScope, $scope, $http, $route
     };
 
     $scope.ucitajStranicu = function() {
-        $http.get('//'+$location.host()+'/imenik/?page='+$scope.api.page).success(function(response){
+        $http.get('/imenik/?page='+$scope.api.page).success(function(response){
             $scope.api.ukupnoStranica = response.totalPages;
             $scope.osobe = response.content;
         });
