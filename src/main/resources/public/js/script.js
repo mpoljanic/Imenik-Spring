@@ -28,6 +28,8 @@ myApp.controller('ImenikController', function ($rootScope, $scope, $http, $route
     $scope.trazi = {
            kriterij: ""
     };
+	
+	$scope.api.page = 0;
 
     $scope.ucitajStranicu = function() {
         $http.get('/imenik/?page='+$scope.api.page).success(function(response){
