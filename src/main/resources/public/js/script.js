@@ -18,6 +18,9 @@ myApp.config(function($routeProvider,$locationProvider,$compileProvider) {
      $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
 });
 
+
+
+
 myApp.controller('ImenikController', function ($rootScope, $scope, $http, $routeParams, $route, $location) {
 
     $scope.api = {
