@@ -1,7 +1,7 @@
 # Imenik-Spring
 Aplikacija
 
-Testiranje Spring framework, Cloudinary, Hibernate, PostgreSQL i Heroku
+Testiranje Spring framework, Cloudinary, Hibernate, PostgreSQL & Heroku
 
 Live:
 
