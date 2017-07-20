@@ -19,8 +19,6 @@ myApp.config(function($routeProvider,$locationProvider,$compileProvider) {
 });
 
 
-
-
 myApp.controller('ImenikController', function ($rootScope, $scope, $http, $routeParams, $route, $location) {
 
     $scope.api = {
